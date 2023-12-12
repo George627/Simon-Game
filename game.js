@@ -23,7 +23,7 @@ const nextSequence = () => {
 
 for(let i = 0; i < clickedButton.length; i++){
     clickedButton[i].addEventListener("click", function() {
-        const userChosenColor = this;
+        const userChosenColor = this.id;
 
         userClickedPattern.push(userChosenColor);
     
