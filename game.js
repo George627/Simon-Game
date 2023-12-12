@@ -2,7 +2,7 @@ const buttonColors = ["red", "blue", "green", "yellow"];
 
 const gamePattern = [];
 
-const clickedButton = $(":button");
+const clickedButton = $("button");
 
 const nextSequence = () => {
     
