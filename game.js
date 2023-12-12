@@ -12,7 +12,7 @@ const nextSequence = () => {
 
     $("#" + randomChosenColor).fadeOut(100).fadeIn(100);
 
-    
+    $("sounds/" + randomChosenColor + ".mp3").play(); 
 
 }
 
