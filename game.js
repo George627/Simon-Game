@@ -19,9 +19,11 @@ const nextSequence = () => {
     audio.play(); 
 }
 
-clickedButton.addEventListener("click", function() {
-    const userChosenColor = this;
-
-    console.log(userChosenColor);
-});
+for(let i = 0; i < clickedButton.length; i++){
+    clickedButton[i].addEventListener("click", function() {
+        const userChosenColor = this;
+    
+        console.log(userChosenColor);
+    });
+}
 
