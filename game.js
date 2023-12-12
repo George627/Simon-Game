@@ -25,6 +25,8 @@ for(let i = 0; i < clickedButton.length; i++){
 
         playSound(userChosenColor.id);
 
+        animatePress(userChosenColor.id);
+
         userClickedPattern.push(userChosenColor);
     
         console.log(userClickedPattern);
@@ -35,5 +37,13 @@ function playSound(name){
     const audio = new Audio("sounds/" + name + ".mp3");
     
     audio.play(); 
+}
+
+function animatePress(currentColor) {
+    const color = $("#" + currentColor);
+
+    color.classList.add("pressed");
+
+    setTimeout(() => {color.classList.remove("pressed")}, 100);
 }
 
