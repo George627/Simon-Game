@@ -20,10 +20,10 @@ const nextSequence = () => {
 }
 
 for(let i = 0; i < clickedButton.length; i++){
-    clickedButton[i].addEventListener("click", () => {
-        const userChosenColor = this.id;
+    clickedButton[i].addEventListener("click", function() {
+        const userChosenColor = this;
 
-        playSound(userChosenColor);
+        playSound(userChosenColor.id);
 
         userClickedPattern.push(userChosenColor);
     
