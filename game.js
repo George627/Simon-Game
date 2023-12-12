@@ -16,18 +16,24 @@ const nextSequence = () => {
 
     $("#" + randomChosenColor).fadeOut(100).fadeIn(100);
 
-    const audio = new Audio("sounds/" + randomChosenColor + ".mp3");
-    
-    audio.play(); 
+    playSound(randomChosenColor);  
 }
 
 for(let i = 0; i < clickedButton.length; i++){
-    clickedButton[i].addEventListener("click", function() {
+    clickedButton[i].addEventListener("click", () => {
         const userChosenColor = this.id;
+
+        playSound(userChosenColor);
 
         userClickedPattern.push(userChosenColor);
     
         console.log(userClickedPattern);
     });
+}
+
+function playSound(name){
+    const audio = new Audio("sounds/" + name + ".mp3");
+    
+    audio.play(); 
 }
 
