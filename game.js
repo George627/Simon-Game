@@ -6,7 +6,13 @@ const userClickedPattern = [];
 
 const clickedButton = $(".btn");
 
+let level = 0;
+
 const nextSequence = () => {
+
+    level++;
+
+    $("#level-title").html("Level " + level);
     
     const randomNumber = Math.floor(Math.random() * 4);
 
@@ -19,6 +25,15 @@ const nextSequence = () => {
     playSound(randomChosenColor);  
 }
 
+document.addEventListener('keydown', () => {
+    
+    if(level === 0){
+       nextSequence(); 
+    }
+    
+    
+});
+
 for(let i = 0; i < clickedButton.length; i++){
     clickedButton[i].addEventListener("click", function() {
         const userChosenColor = this;
@@ -28,8 +43,6 @@ for(let i = 0; i < clickedButton.length; i++){
         animatePress(userChosenColor.id);
 
         userClickedPattern.push(userChosenColor);
-    
-        console.log(userClickedPattern);
     });
 }
 
@@ -40,7 +53,7 @@ function playSound(name){
 }
 
 function animatePress(currentColor) {
-    const color = $("#" + currentColor);
+    const color = $("." + currentColor)[0];
 
     color.classList.add("pressed");
 
