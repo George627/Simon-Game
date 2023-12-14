@@ -10,6 +10,8 @@ let level = 0;
 
 const nextSequence = () => {
 
+    userClickedPattern.splice(0, userClickedPattern.length);
+
     level++;
 
     $("#level-title").html("Level " + level);
@@ -36,13 +38,15 @@ document.addEventListener('keydown', () => {
 
 for(let i = 0; i < clickedButton.length; i++){
     clickedButton[i].addEventListener("click", function() {
-        const userChosenColor = this;
+        const userChosenColor = this.id;
 
-        playSound(userChosenColor.id);
+        playSound(userChosenColor);
 
-        animatePress(userChosenColor.id);
+        animatePress(userChosenColor);
 
         userClickedPattern.push(userChosenColor);
+
+        checkAnswer(userClickedPattern.length-1);
     });
 }
 
@@ -58,5 +62,34 @@ function animatePress(currentColor) {
     color.classList.add("pressed");
 
     setTimeout(() => {color.classList.remove("pressed")}, 100);
+}
+
+function checkAnswer(currentLevel){
+  
+    if(userClickedPattern[currentLevel] === gamePattern[currentLevel]){
+        if(userClickedPattern.length === gamePattern.length){
+            setTimeout('nextSequence()', 1000)
+        }
+    } 
+
+    else{
+        gameRestart();
+    }
+}
+
+function gameRestart(){
+    const wrong = new Audio("sounds/wrong.mp3");
+
+    wrong.play();
+
+    $("body").addClass("game-over");
+
+    setTimeout(() => {$("body").removeClass("game-over")}, 200);
+
+    $("#level-title").html("Game Over, Press any key to Restart.");
+
+    level = 0;
+
+    gamePattern.splice(0, gamePattern.length);
 }
 
