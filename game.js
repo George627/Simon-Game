@@ -71,6 +71,7 @@ for(let i = 0; i < clickedButton.length; i++){
         //The clicked button will then be added to the userClickedPattern array.
         userClickedPattern.push(userChosenColor);
 
+        //checks the current
         checkAnswer(userClickedPattern.length-1);
     });
 }
