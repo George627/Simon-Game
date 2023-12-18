@@ -58,12 +58,17 @@ document.addEventListener('keydown', () => {
 will run as follows.*/
 for(let i = 0; i < clickedButton.length; i++){
     clickedButton[i].addEventListener("click", function() {
+
+        //Grabs the button that was clicked by the user. 
         const userChosenColor = this.id;
 
+        //The button will play the corresponding sound of the color that was clicked.
         playSound(userChosenColor);
 
+        //A animation will activate once the button is clicked.
         animatePress(userChosenColor);
 
+        //The clicked button will then be added to the userClickedPattern array.
         userClickedPattern.push(userChosenColor);
 
         checkAnswer(userClickedPattern.length-1);
